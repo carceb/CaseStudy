@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CaseStudy.Models.Registration>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Participants.ParticipantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sessions.SessionName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Participants.ParticipantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sessions.SessionName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RegistrationID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RegistrationID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RegistrationID })
+            </td>
+        </tr>
+    }
+
+</table>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
